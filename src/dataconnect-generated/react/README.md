@@ -7,12 +7,9 @@ This README will guide you through the process of using the generated React SDK 
 
 You can use this generated SDK by importing from the package `@dataconnect/generated/react` as shown below. Both CommonJS and ESM imports are supported.
 
-You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#react).
 
 # Table of Contents
 - [**Overview**](#generated-react-readme)
-- [**TanStack Query Firebase & TanStack React Query**](#tanstack-query-firebase-tanstack-react-query)
-  - [*Package Installation*](#installing-tanstack-query-firebase-and-tanstack-react-query-packages)
   - [*Configuring TanStack Query*](#configuring-tanstack-query)
 - [**Accessing the connector**](#accessing-the-connector)
   - [*Connecting to the local Emulator*](#connecting-to-the-local-emulator)
@@ -28,21 +25,13 @@ You can also follow the instructions from the [Data Connect documentation](https
   - [*AddReview*](#addreview)
   - [*DeleteReview*](#deletereview)
 
-# TanStack Query Firebase & TanStack React Query
-This SDK provides [React](https://react.dev/) hooks generated specific to your application, for the operations found in the connector `example`. These hooks are generated using [TanStack Query Firebase](https://react-query-firebase.invertase.dev/) by our partners at Invertase, a library built on top of [TanStack React Query v5](https://tanstack.com/query/v5/docs/framework/react/overview).
 
-***You do not need to be familiar with Tanstack Query or Tanstack Query Firebase to use this SDK.*** However, you may find it useful to learn more about them, as they will empower you as a user of this Generated React SDK.
 
-## Installing TanStack Query Firebase and TanStack React Query Packages
-In order to use the React generated SDK, you must install the `TanStack React Query` and `TanStack Query Firebase` packages.
 ```bash
-npm i --save @tanstack/react-query @tanstack-query-firebase/react
 ```
 ```bash
-npm i --save firebase@latest # Note: React has a peer dependency on ^11.3.0
 ```
 
-You can also follow the installation instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#tanstack-install), or the [TanStack Query Firebase documentation](https://react-query-firebase.invertase.dev/react) and [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/installation).
 
 ## Configuring TanStack Query
 In order to use the React generated SDK in your application, you must wrap your application's component tree in a `QueryClientProvider` component from TanStack React Query. None of your generated React SDK hooks will work without this provider.
@@ -63,15 +52,12 @@ function App() {
 }
 ```
 
-To learn more about `QueryClientProvider`, see the [TanStack React Query documentation](https://tanstack.com/query/latest/docs/framework/react/quick-start) and the [TanStack Query Firebase documentation](https://invertase.docs.page/tanstack-query-firebase/react#usage).
 
 # Accessing the connector
 A connector is a collection of Queries and Mutations. One SDK is generated for each connector - this SDK is generated for the connector `example`.
 
-You can find more information about connectors in the [Data Connect documentation](https://firebase.google.com/docs/data-connect#how-does).
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 
 const dataConnect = getDataConnect(connectorConfig);
@@ -81,10 +67,8 @@ const dataConnect = getDataConnect(connectorConfig);
 By default, the connector will connect to the production service.
 
 To connect to the emulator, you can use the following code.
-You can also follow the emulator instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#emulator-react-angular).
 
 ```javascript
-import { connectDataConnectEmulator, getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 
 const dataConnect = getDataConnect(connectorConfig);
@@ -95,9 +79,7 @@ After it's initialized, you can call your Data Connect [queries](#queries) and [
 
 # Queries
 
-The React generated SDK provides Query hook functions that call and return [`useDataConnectQuery`](https://react-query-firebase.invertase.dev/react/data-connect/querying) hooks from TanStack Query Firebase.
 
-Calling these hook functions will return a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and the most recent data returned by the Query, among other things. To learn more about these hooks and how to use them, see the [TanStack Query Firebase documentation](https://react-query-firebase.invertase.dev/react/data-connect/querying).
 
 TanStack React Query caches the results of your Queries, so using the same Query hook function in multiple places in your application allows the entire application to automatically see updates to that Query's data.
 
@@ -116,7 +98,6 @@ Here's a general overview of how to use the generated Query hooks in your code:
 - Query hooks functions can be called with or without passing in an `options` argument of type `useDataConnectQueryOptions`. To learn more about the `options` argument, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/guides/query-options).
   - ***Special case:***  If the Query has all optional variables and you would like to provide an `options` argument to the Query hook function without providing any variables, you must pass `undefined` where you would normally pass the Query's variables, and then may provide the `options` argument.
 
-Below are examples of how to use the `example` connector's generated Query hook functions to execute each Query. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#operations-react-angular).
 
 ## ListMovies
 You can execute the `ListMovies` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
@@ -153,7 +134,6 @@ To learn more about the `UseQueryResult` object, see the [TanStack React Query d
 ### Using `ListMovies`'s Query hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 import { useListMovies } from '@dataconnect/generated/react'
 
@@ -225,7 +205,6 @@ To learn more about the `UseQueryResult` object, see the [TanStack React Query d
 ### Using `ListUsers`'s Query hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 import { useListUsers } from '@dataconnect/generated/react'
 
@@ -306,7 +285,6 @@ To learn more about the `UseQueryResult` object, see the [TanStack React Query d
 ### Using `ListUserReviews`'s Query hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 import { useListUserReviews } from '@dataconnect/generated/react'
 
@@ -400,7 +378,6 @@ To learn more about the `UseQueryResult` object, see the [TanStack React Query d
 ### Using `GetMovieById`'s Query hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, GetMovieByIdVariables } from '@dataconnect/generated';
 import { useGetMovieById } from '@dataconnect/generated/react'
 
@@ -488,7 +465,6 @@ To learn more about the `UseQueryResult` object, see the [TanStack React Query d
 ### Using `SearchMovie`'s Query hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, SearchMovieVariables } from '@dataconnect/generated';
 import { useSearchMovie } from '@dataconnect/generated/react'
 
@@ -543,9 +519,7 @@ export default function SearchMovieComponent() {
 
 # Mutations
 
-The React generated SDK provides Mutations hook functions that call and return [`useDataConnectMutation`](https://react-query-firebase.invertase.dev/react/data-connect/mutations) hooks from TanStack Query Firebase.
 
-Calling these hook functions will return a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, and the most recent data returned by the Mutation, among other things. To learn more about these hooks and how to use them, see the [TanStack Query Firebase documentation](https://react-query-firebase.invertase.dev/react/data-connect/mutations).
 
 Mutation hooks do not execute their Mutations automatically when called. Rather, after calling the Mutation hook function and getting a `UseMutationResult` object, you must call the `UseMutationResult.mutate()` function to execute the Mutation.
 
@@ -564,16 +538,13 @@ Here's a general overview of how to use the generated Mutation hooks in your cod
   - `UseMutationResult.mutate()` also accepts an `options` argument of type `useDataConnectMutationOptions`.
   - ***Special case:*** If the Mutation has no arguments (or all optional arguments and you wish to provide none), and you want to pass `options` to `UseMutationResult.mutate()`, you must pass `undefined` where you would normally pass the Mutation's arguments, and then may provide the options argument.
 
-Below are examples of how to use the `example` connector's generated Mutation hook functions to execute each Mutation. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#operations-react-angular).
 
 ## CreateMovie
 You can execute the `CreateMovie` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
-useCreateMovie(options?: useDataConnectMutationOptions<CreateMovieData, FirebaseError, CreateMovieVariables>): UseDataConnectMutationResult<CreateMovieData, CreateMovieVariables>;
 ```
 You can also pass in a `DataConnect` instance to the Mutation hook function.
 ```javascript
-useCreateMovie(dc: DataConnect, options?: useDataConnectMutationOptions<CreateMovieData, FirebaseError, CreateMovieVariables>): UseDataConnectMutationResult<CreateMovieData, CreateMovieVariables>;
 ```
 
 ### Variables
@@ -605,7 +576,6 @@ To learn more about the `UseMutationResult` object, see the [TanStack React Quer
 ### Using `CreateMovie`'s Mutation hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, CreateMovieVariables } from '@dataconnect/generated';
 import { useCreateMovie } from '@dataconnect/generated/react'
 
@@ -667,11 +637,9 @@ export default function CreateMovieComponent() {
 ## UpsertUser
 You can execute the `UpsertUser` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
-useUpsertUser(options?: useDataConnectMutationOptions<UpsertUserData, FirebaseError, UpsertUserVariables>): UseDataConnectMutationResult<UpsertUserData, UpsertUserVariables>;
 ```
 You can also pass in a `DataConnect` instance to the Mutation hook function.
 ```javascript
-useUpsertUser(dc: DataConnect, options?: useDataConnectMutationOptions<UpsertUserData, FirebaseError, UpsertUserVariables>): UseDataConnectMutationResult<UpsertUserData, UpsertUserVariables>;
 ```
 
 ### Variables
@@ -701,7 +669,6 @@ To learn more about the `UseMutationResult` object, see the [TanStack React Quer
 ### Using `UpsertUser`'s Mutation hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, UpsertUserVariables } from '@dataconnect/generated';
 import { useUpsertUser } from '@dataconnect/generated/react'
 
@@ -761,11 +728,9 @@ export default function UpsertUserComponent() {
 ## AddReview
 You can execute the `AddReview` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
-useAddReview(options?: useDataConnectMutationOptions<AddReviewData, FirebaseError, AddReviewVariables>): UseDataConnectMutationResult<AddReviewData, AddReviewVariables>;
 ```
 You can also pass in a `DataConnect` instance to the Mutation hook function.
 ```javascript
-useAddReview(dc: DataConnect, options?: useDataConnectMutationOptions<AddReviewData, FirebaseError, AddReviewVariables>): UseDataConnectMutationResult<AddReviewData, AddReviewVariables>;
 ```
 
 ### Variables
@@ -797,7 +762,6 @@ To learn more about the `UseMutationResult` object, see the [TanStack React Quer
 ### Using `AddReview`'s Mutation hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, AddReviewVariables } from '@dataconnect/generated';
 import { useAddReview } from '@dataconnect/generated/react'
 
@@ -859,11 +823,9 @@ export default function AddReviewComponent() {
 ## DeleteReview
 You can execute the `DeleteReview` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
-useDeleteReview(options?: useDataConnectMutationOptions<DeleteReviewData, FirebaseError, DeleteReviewVariables>): UseDataConnectMutationResult<DeleteReviewData, DeleteReviewVariables>;
 ```
 You can also pass in a `DataConnect` instance to the Mutation hook function.
 ```javascript
-useDeleteReview(dc: DataConnect, options?: useDataConnectMutationOptions<DeleteReviewData, FirebaseError, DeleteReviewVariables>): UseDataConnectMutationResult<DeleteReviewData, DeleteReviewVariables>;
 ```
 
 ### Variables
@@ -893,7 +855,6 @@ To learn more about the `UseMutationResult` object, see the [TanStack React Quer
 ### Using `DeleteReview`'s Mutation hook function
 
 ```javascript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, DeleteReviewVariables } from '@dataconnect/generated';
 import { useDeleteReview } from '@dataconnect/generated/react'
 

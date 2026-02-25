@@ -1,6 +1,4 @@
 const { createMovieRef, upsertUserRef, addReviewRef, deleteReviewRef, listMoviesRef, listUsersRef, listUserReviewsRef, getMovieByIdRef, searchMovieRef, connectorConfig } = require('../index.cjs.js');
-const { validateArgs, CallerSdkTypeEnum } = require('firebase/data-connect');
-const { useDataConnectQuery, useDataConnectMutation, validateReactArgs } = require('@tanstack-query-firebase/react/data-connect');
 
 exports.useCreateMovie = function useCreateMovie(dcOrOptions, options) {
   const { dc: dcInstance, vars: inputOpts } = validateArgs(connectorConfig, dcOrOptions, options);

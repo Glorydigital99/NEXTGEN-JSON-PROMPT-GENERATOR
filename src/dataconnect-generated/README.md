@@ -22,14 +22,11 @@ This README will guide you through the process of using the generated JavaScript
   - [*DeleteReview*](#deletereview)
 
 # Accessing the connector
-A connector is a collection of Queries and Mutations. One SDK is generated for each connector - this SDK is generated for the connector `example`. You can find more information about connectors in the [Data Connect documentation](https://firebase.google.com/docs/data-connect#how-does).
 
 You can use this generated SDK by importing from the package `@dataconnect/generated` as shown below. Both CommonJS and ESM imports are supported.
 
-You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#set-client).
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 
 const dataConnect = getDataConnect(connectorConfig);
@@ -39,10 +36,8 @@ const dataConnect = getDataConnect(connectorConfig);
 By default, the connector will connect to the production service.
 
 To connect to the emulator, you can use the following code.
-You can also follow the emulator instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#instrument-clients).
 
 ```typescript
-import { connectDataConnectEmulator, getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from '@dataconnect/generated';
 
 const dataConnect = getDataConnect(connectorConfig);
@@ -64,7 +59,6 @@ The following is true for both the action shortcut function and the `QueryRef` f
 - If the Query accepts arguments, both the action shortcut function and the `QueryRef` function accept a single argument: an object that contains all the required variables (and the optional variables) for the Query
 - Both functions can be called with or without passing in a `DataConnect` instance as an argument. If no `DataConnect` argument is passed in, then the generated SDK will call `getDataConnect(connectorConfig)` behind the scenes for you.
 
-Below are examples of how to use the `example` connector's generated functions to execute each query. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#using-queries).
 
 ## ListMovies
 You can execute the `ListMovies` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [dataconnect-generated/index.d.ts](./index.d.ts):
@@ -114,7 +108,6 @@ export interface ListMoviesData {
 ### Using `ListMovies`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listMovies } from '@dataconnect/generated';
 
 
@@ -138,7 +131,6 @@ listMovies().then((response) => {
 ### Using `ListMovies`'s `QueryRef` function
 
 ```typescript
-import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listMoviesRef } from '@dataconnect/generated';
 
 
@@ -208,7 +200,6 @@ export interface ListUsersData {
 ### Using `ListUsers`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listUsers } from '@dataconnect/generated';
 
 
@@ -232,7 +223,6 @@ listUsers().then((response) => {
 ### Using `ListUsers`'s `QueryRef` function
 
 ```typescript
-import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listUsersRef } from '@dataconnect/generated';
 
 
@@ -311,7 +301,6 @@ export interface ListUserReviewsData {
 ### Using `ListUserReviews`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, listUserReviews } from '@dataconnect/generated';
 
 
@@ -335,7 +324,6 @@ listUserReviews().then((response) => {
 ### Using `ListUserReviews`'s `QueryRef` function
 
 ```typescript
-import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, listUserReviewsRef } from '@dataconnect/generated';
 
 
@@ -427,7 +415,6 @@ export interface GetMovieByIdData {
 ### Using `GetMovieById`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, getMovieById, GetMovieByIdVariables } from '@dataconnect/generated';
 
 // The `GetMovieById` query requires an argument of type `GetMovieByIdVariables`:
@@ -457,7 +444,6 @@ getMovieById(getMovieByIdVars).then((response) => {
 ### Using `GetMovieById`'s `QueryRef` function
 
 ```typescript
-import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, getMovieByIdRef, GetMovieByIdVariables } from '@dataconnect/generated';
 
 // The `GetMovieById` query requires an argument of type `GetMovieByIdVariables`:
@@ -542,7 +528,6 @@ export interface SearchMovieData {
 ### Using `SearchMovie`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, searchMovie, SearchMovieVariables } from '@dataconnect/generated';
 
 // The `SearchMovie` query has an optional argument of type `SearchMovieVariables`:
@@ -575,7 +560,6 @@ searchMovie(searchMovieVars).then((response) => {
 ### Using `SearchMovie`'s `QueryRef` function
 
 ```typescript
-import { getDataConnect, executeQuery } from 'firebase/data-connect';
 import { connectorConfig, searchMovieRef, SearchMovieVariables } from '@dataconnect/generated';
 
 // The `SearchMovie` query has an optional argument of type `SearchMovieVariables`:
@@ -621,7 +605,6 @@ The following is true for both the action shortcut function and the `MutationRef
 - If the Mutation accepts arguments, both the action shortcut function and the `MutationRef` function accept a single argument: an object that contains all the required variables (and the optional variables) for the Mutation
 - Both functions can be called with or without passing in a `DataConnect` instance as an argument. If no `DataConnect` argument is passed in, then the generated SDK will call `getDataConnect(connectorConfig)` behind the scenes for you.
 
-Below are examples of how to use the `example` connector's generated functions to execute each mutation. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#using-mutations).
 
 ## CreateMovie
 You can execute the `CreateMovie` mutation using the following action shortcut function, or by calling `executeMutation()` after calling the following `MutationRef` function, both of which are defined in [dataconnect-generated/index.d.ts](./index.d.ts):
@@ -674,7 +657,6 @@ export interface CreateMovieData {
 ### Using `CreateMovie`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, createMovie, CreateMovieVariables } from '@dataconnect/generated';
 
 // The `CreateMovie` mutation requires an argument of type `CreateMovieVariables`:
@@ -706,7 +688,6 @@ createMovie(createMovieVars).then((response) => {
 ### Using `CreateMovie`'s `MutationRef` function
 
 ```typescript
-import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, createMovieRef, CreateMovieVariables } from '@dataconnect/generated';
 
 // The `CreateMovie` mutation requires an argument of type `CreateMovieVariables`:
@@ -787,7 +768,6 @@ export interface UpsertUserData {
 ### Using `UpsertUser`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, upsertUser, UpsertUserVariables } from '@dataconnect/generated';
 
 // The `UpsertUser` mutation requires an argument of type `UpsertUserVariables`:
@@ -817,7 +797,6 @@ upsertUser(upsertUserVars).then((response) => {
 ### Using `UpsertUser`'s `MutationRef` function
 
 ```typescript
-import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, upsertUserRef, UpsertUserVariables } from '@dataconnect/generated';
 
 // The `UpsertUser` mutation requires an argument of type `UpsertUserVariables`:
@@ -898,7 +877,6 @@ export interface AddReviewData {
 ### Using `AddReview`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, addReview, AddReviewVariables } from '@dataconnect/generated';
 
 // The `AddReview` mutation requires an argument of type `AddReviewVariables`:
@@ -930,7 +908,6 @@ addReview(addReviewVars).then((response) => {
 ### Using `AddReview`'s `MutationRef` function
 
 ```typescript
-import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, addReviewRef, AddReviewVariables } from '@dataconnect/generated';
 
 // The `AddReview` mutation requires an argument of type `AddReviewVariables`:
@@ -1011,7 +988,6 @@ export interface DeleteReviewData {
 ### Using `DeleteReview`'s action shortcut function
 
 ```typescript
-import { getDataConnect } from 'firebase/data-connect';
 import { connectorConfig, deleteReview, DeleteReviewVariables } from '@dataconnect/generated';
 
 // The `DeleteReview` mutation requires an argument of type `DeleteReviewVariables`:
@@ -1041,7 +1017,6 @@ deleteReview(deleteReviewVars).then((response) => {
 ### Using `DeleteReview`'s `MutationRef` function
 
 ```typescript
-import { getDataConnect, executeMutation } from 'firebase/data-connect';
 import { connectorConfig, deleteReviewRef, DeleteReviewVariables } from '@dataconnect/generated';
 
 // The `DeleteReview` mutation requires an argument of type `DeleteReviewVariables`:
